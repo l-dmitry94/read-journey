@@ -1,0 +1,8 @@
+.controls {
+    @apply flex items-center gap-[14px];
+}
+
+.linkText {
+    @apply text-xs font-medium leading-[1.17] text-gray underline;
+    text-decoration-skip-ink: none;
+}

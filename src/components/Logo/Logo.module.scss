@@ -1,0 +1,11 @@
+.logo {
+    @apply flex items-center gap-1;
+}
+
+.logoIcon {
+    @apply h-[17px] w-[42px] fill-primary;
+}
+
+.logoText {
+    @apply text-lg font-bold uppercase leading-none;
+}
