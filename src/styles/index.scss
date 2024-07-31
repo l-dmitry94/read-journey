@@ -1,0 +1,9 @@
+@import 'fonts';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-gilroy text-primary bg-black leading-tight tracking-tight;
+}
