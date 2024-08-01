@@ -1,20 +1,46 @@
+@import 'styles/mixins';
+
 .wrapper {
     @apply flex flex-col gap-[10px] py-5;
+
+    @include media-rules(tablet) {
+        @apply py-8;
+    }
+
+    @include media-rules(desktop) {
+        @apply flex-row gap-4
+    }
 }
 
 .innerWrapper {
     @apply rounded-4xl bg-secondary-dark px-5 pb-10 pt-5;
+
+    @include media-rules(tablet) {
+        @apply py-10 pl-16 pr-[168px];
+    }
+
+    @include media-rules(desktop) {
+        @apply px-16 w-1/2
+    }
 }
 
 .innerWrapperImage {
-    @apply pb-0;
+    @apply pb-0 flex items-end justify-center;
 }
 
 .title {
-    @apply mt-10 text-[2rem] font-bold leading-none mb-5;
+    @apply mb-5 mt-10 text-[2rem] font-bold leading-none;
 
     &Color {
         @apply text-[#e3e3e3]/50;
+    }
+
+    @include media-rules(tablet) {
+        @apply mt-[157px] mb-10 max-w-[444px] text-[64px] leading-[0.94];
+    }
+
+    @include media-rules(desktop) {
+        @apply mt-[107px]
     }
 }
 

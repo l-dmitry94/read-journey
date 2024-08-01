@@ -1,3 +1,9 @@
+@import 'styles/mixins';
+
 .inputsWrapper {
-    @apply flex flex-col gap-2 mb-[72px]
+    @apply mb-[72px] flex flex-col gap-2;
+
+    @include media-rules(tablet) {
+        @apply mb-[146px] gap-[14px];
+    }
 }

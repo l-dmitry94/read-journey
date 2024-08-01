@@ -1,5 +1,7 @@
+@import 'styles/mixins';
+
 .button {
-    @apply rounded-4xl border border-transparent text-sm font-bold text-secondary-dark transition-colors duration-200 ease-linear;
+    @apply rounded-4xl border border-transparent text-sm font-bold tracking-[0.02em] text-secondary-dark transition-colors duration-200 ease-linear;
 
     &Primary {
         @apply bg-primary;
@@ -7,13 +9,17 @@
         &:is(:hover, :focus) {
             @apply border border-primary/20 bg-transparent text-primary;
         }
-    };
+    }
 
     &Secondary {
-        @apply bg-transparent border border-primary/20 text-primary;
+        @apply border border-primary/20 bg-transparent text-primary;
 
         &:is(:hover, :focus) {
-            @apply  bg-primary text-secondary-dark border-transparent;
+            @apply border-transparent bg-primary text-secondary-dark;
         }
+    }
+
+    @include media-rules(tablet) {
+        @apply text-xl leading-none;
     }
 }

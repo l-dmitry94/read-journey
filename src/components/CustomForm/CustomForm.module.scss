@@ -1,8 +1,18 @@
+@import "styles/mixins";
+
 .controls {
     @apply flex items-center gap-[14px];
+
+    @include media-rules(tablet) {
+        @apply gap-5
+    }
 }
 
 .linkText {
     @apply text-xs font-medium leading-[1.17] text-gray underline;
     text-decoration-skip-ink: none;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-tight;
+    }
 }

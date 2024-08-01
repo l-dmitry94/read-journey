@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import clsx from 'clsx';
 import Logo from 'components/Logo';
 import { useMedia } from 'hooks/useMedia';
 import {
@@ -9,10 +10,10 @@ import {
 } from 'assets/auth';
 import { IAuth } from './Auth.types';
 import scss from './Auth.module.scss';
-import clsx from 'clsx';
 
 const Auth: FC<IAuth> = ({ children }) => {
     const { isTablet } = useMedia();
+
     return (
         <div className={scss.wrapper}>
             <div className={scss.innerWrapper}>

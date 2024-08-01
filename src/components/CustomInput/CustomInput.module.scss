@@ -1,17 +1,31 @@
+@import 'styles/mixins';
+
 .inputWrapper {
-    @apply relative flex h-11 items-center gap-[10px] rounded-xl bg-secondary pl-[14px] pr-4 transition-colors duration-200 ease-linear border border-transparent;
+    @apply relative flex h-11 items-center gap-[10px] rounded-xl border border-transparent bg-secondary pl-[14px] pr-4 transition-colors duration-200 ease-linear;
 
     &:hover {
         @apply border-primary/10;
     }
+
+    @include media-rules(tablet) {
+        @apply h-[50px] pr-[18px];
+    }
 }
 
 .label {
-    @apply text-xs font-medium leading-[1.33] text-gray;
+    @apply cursor-pointer text-xs font-medium leading-[1.33] text-gray;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-tight;
+    }
 }
 
 .input {
-    @apply h-full w-full bg-transparent text-sm font-medium leading-[1.33] outline-none rounded-xl;
+    @apply h-full w-full rounded-xl bg-transparent text-xs font-medium leading-[1.33] outline-none;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-tight;
+    }
 }
 
 .passwordButton {
@@ -23,21 +37,33 @@
 }
 
 .error {
-    @apply font-medium text-[0.625rem] leading-[1.2] text-error mt-1;
+    @apply mt-1 text-[0.625rem] font-medium leading-[1.2] text-error;
+
+    @include media-rules(tablet) {
+        @apply mt-2 text-sm leading-[1.17];
+    }
 }
 
 .errorBorder {
-    @apply border-error
+    @apply border-error;
 }
 
 .successBorder {
-    @apply border-success
+    @apply border-success;
 }
 
 .errorIcon {
-    @apply w-[18px] h-[18px] fill-error
+    @apply h-[1.125rem] w-[1.125rem] fill-error;
+
+    @include media-rules(tablet) {
+        @apply h-5 w-5;
+    }
 }
 
 .successIcon {
-    @apply w-[18px] h-[18px] fill-success
+    @apply h-[1.125rem] w-[1.125rem] fill-success;
+
+    @include media-rules(tablet) {
+        @apply h-5 w-5;
+    }
 }
