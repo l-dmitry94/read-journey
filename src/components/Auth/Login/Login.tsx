@@ -1,10 +1,10 @@
 import Container from 'components/Container';
 import Auth from '../Auth';
 import CustomForm, { AuthType } from 'components/CustomForm';
-import scss from './Login.module.scss';
 import CustomInput from 'components/CustomInput';
-import { ILogin } from './Login.types';
 import loginData from './loginData';
+import { ILogin } from './Login.types';
+import scss from './Login.module.scss';
 
 const Login = () => {
     return (
