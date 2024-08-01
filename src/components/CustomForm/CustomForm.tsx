@@ -6,14 +6,22 @@ import { AuthType, ICustomForm } from './CustomForm.types';
 import { ILogin } from 'components/Auth/Login';
 import { IRegister } from 'components/Auth/Register';
 import scss from './CustomForm.module.scss';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-const CustomForm: FC<ICustomForm> = ({ authType, children }) => {
+const CustomForm: FC<ICustomForm> = ({
+    authType,
+    validationSchema,
+    children,
+}) => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, touchedFields },
         reset,
-    } = useForm<ILogin | IRegister>();
+    } = useForm<ILogin | IRegister>({
+        resolver: yupResolver(validationSchema),
+        mode: 'onBlur',
+    });
 
     const onSubmit: SubmitHandler<ILogin | IRegister> = (data) => {
         console.log(data);
@@ -21,7 +29,7 @@ const CustomForm: FC<ICustomForm> = ({ authType, children }) => {
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            {children(register, errors)}
+            {children(register, errors, touchedFields)}
 
             <div className={scss.controls}>
                 <CustomButton

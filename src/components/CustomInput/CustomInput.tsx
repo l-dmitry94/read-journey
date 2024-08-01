@@ -9,6 +9,7 @@ const CustomInput: FC<ICustomInput> = ({
     register,
     label,
     error,
+    touched,
     ...rest
 }) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -19,13 +20,16 @@ const CustomInput: FC<ICustomInput> = ({
 
     return (
         <div>
-            <div className={scss.inputWrapper}>
+            <div
+                className={`${scss.inputWrapper} ${touched && (error ? scss.errorBorder : scss.successBorder)}`}
+            >
                 <label htmlFor={name} className={scss.label}>
                     {`${label}:`}
                 </label>
                 <input
                     {...rest}
                     id={name}
+                    autoComplete="off"
                     type={
                         isShowPassword || type === 'text' ? 'text' : 'password'
                     }
@@ -33,7 +37,19 @@ const CustomInput: FC<ICustomInput> = ({
                     className={scss.input}
                 />
 
-                {type === 'password' && (
+                {touched && error && (
+                    <svg className={scss.errorIcon}>
+                        <use href={`${icons}#icon-error`}></use>
+                    </svg>
+                )}
+
+                {touched && !error && (
+                    <svg className={scss.successIcon}>
+                        <use href={`${icons}#icon-check`}></use>
+                    </svg>
+                )}
+
+                {type === 'password' && !touched && (
                     <button
                         type="button"
                         onClick={handleClick}

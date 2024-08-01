@@ -5,14 +5,18 @@ import CustomInput from 'components/CustomInput';
 import loginData from './loginData';
 import { ILogin } from './Login.types';
 import scss from './Login.module.scss';
+import validationSchema from './validationSchema';
 
 const Login = () => {
     return (
         <section>
             <Container>
                 <Auth>
-                    <CustomForm authType={AuthType.Login}>
-                        {(register, errors) => (
+                    <CustomForm
+                        authType={AuthType.Login}
+                        validationSchema={validationSchema}
+                    >
+                        {(register, errors, touchedFields) => (
                             <div className={scss.inputsWrapper}>
                                 {loginData.map(({ name, type, label }) => (
                                     <CustomInput
@@ -21,6 +25,7 @@ const Login = () => {
                                         type={type}
                                         register={register}
                                         error={errors[name]?.message}
+                                        touched={touchedFields[name]}
                                         label={label}
                                     />
                                 ))}

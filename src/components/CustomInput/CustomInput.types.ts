@@ -9,4 +9,5 @@ export interface ICustomInput extends InputHTMLAttributes<HTMLInputElement> {
     error?: string;
     type: HTMLInputTypeAttribute;
     label: string;
+    touched: any;
 }

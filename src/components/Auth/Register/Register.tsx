@@ -3,6 +3,7 @@ import Auth from '../Auth';
 import CustomForm, { AuthType } from 'components/CustomForm';
 import CustomInput from 'components/CustomInput';
 import registerData from './registerData';
+import validationSchema from './validationSchema';
 import { IRegister } from './Register.types';
 import scss from './Register.module.scss';
 
@@ -11,8 +12,11 @@ const Register = () => {
         <section>
             <Container>
                 <Auth>
-                    <CustomForm authType={AuthType.Register}>
-                        {(register, errors) => (
+                    <CustomForm
+                        authType={AuthType.Register}
+                        validationSchema={validationSchema}
+                    >
+                        {(register, errors, touchedFields) => (
                             <div className={scss.inputsWrapper}>
                                 {registerData.map(({ name, type, label }) => (
                                     <CustomInput
@@ -21,6 +25,7 @@ const Register = () => {
                                         type={type}
                                         register={register}
                                         error={errors[name]?.message}
+                                        touched={touchedFields[name]}
                                         label={label}
                                     />
                                 ))}
