@@ -1,0 +1,9 @@
+@import 'fonts';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-background-dark font-gilroy text-primary text-sm;
+}

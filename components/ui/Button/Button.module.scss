@@ -1,0 +1,25 @@
+@import '@/styles/mixins';
+
+.button {
+    @apply rounded-30 border px-6 py-3 font-bold leading-129 -tracking-tight transition-colors duration-150 ease-linear;
+
+    @include media-rules(tablet) {
+        @apply px-14 py-4 text-xl leading-none;
+    }
+
+    &.contained {
+        @apply bg-primary text-background;
+
+        &:hover {
+            @apply border-primary/20 bg-transparent text-primary;
+        }
+    }
+
+    &.outlined {
+        @apply border-primary/20 text-primary;
+
+        &:hover {
+            @apply bg-primary text-background;
+        }
+    }
+}

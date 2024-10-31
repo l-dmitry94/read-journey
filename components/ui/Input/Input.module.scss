@@ -1,0 +1,45 @@
+@import '@/styles/mixins';
+
+.inputWrapper {
+    @apply relative flex h-12 items-center gap-[0.625rem] rounded-12 border border-transparent bg-background-light px-[0.875rem] transition-colors duration-150 ease-linear font-medium text-xs leading-133 tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply h-[3.125rem] text-sm leading-129;
+    }
+
+    &:hover {
+        @apply border-primary/10;
+    }
+
+    & .icon {
+        @apply h-[1.125rem] w-[1.125rem] fill-none stroke-primary;
+    }
+
+    & .errorIcon {
+        @apply h-[1.125rem] w-[1.125rem] shrink-0 fill-error;
+    }
+}
+
+.label {
+    @apply text-xs font-medium leading-133 tracking-tight text-secondary;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-129;
+    }
+}
+
+.input {
+    @apply w-full bg-transparent outline-none;
+}
+
+.error {
+    @apply mt-1 text-[0.625rem] font-medium leading-117 -tracking-tight text-error;
+
+    @include media-rules(tablet) {
+        @apply mt-2 text-xs tracking-tight;
+    }
+}
+
+.inputError {
+    @apply border-error;
+}

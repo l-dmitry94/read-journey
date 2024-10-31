@@ -1,0 +1,45 @@
+@import '@/styles/mixins';
+
+.auth {
+    @apply py-5;
+
+    @include media-rules(tablet) {
+        @apply py-8;
+    }
+}
+
+.wrapper {
+    @apply flex flex-col gap-[0.625rem];
+
+    @include media-rules(desktop) {
+        @apply flex-row gap-4;
+    }
+}
+
+.authData {
+    @apply bg-background rounded-30 px-5 pb-10 pt-5;
+
+    @include media-rules(tablet) {
+        @apply px-16 pb-[13.375rem] pt-10;
+    }
+
+    @include media-rules(desktop) {
+        @apply w-1/2 pb-10;
+    }
+}
+
+.title {
+    @apply mb-5 mt-10 text-[2rem] font-bold leading-none -tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply mb-10 mt-[9.8125rem] max-w-[28rem] text-[4rem] leading-94;
+    }
+
+    @include media-rules(desktop) {
+        @apply mt-[6.6875rem];
+    }
+
+    &Color {
+        @apply text-[#e3e3e3]/50;
+    }
+}

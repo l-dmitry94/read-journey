@@ -1,0 +1,30 @@
+@import '@/styles/mixins';
+
+.inputsWrapper {
+    @apply mb-5 flex flex-col gap-2;
+
+    @include media-rules(tablet) {
+        @apply mb-[5.125rem] max-w-[29.5rem] gap-[0.875rem];
+    }
+}
+
+.controlWrapper {
+    @apply flex items-center gap-[0.875rem];
+
+    @include media-rules(tablet) {
+        @apply gap-5;
+    }
+
+    & .button {
+        @apply px-7;
+    }
+
+    & .link {
+        @apply text-xs font-medium leading-117 tracking-tight text-secondary underline;
+        text-decoration-skip-ink: none;
+
+        @include media-rules(tablet) {
+            @apply text-sm leading-129;
+        }
+    }
+}

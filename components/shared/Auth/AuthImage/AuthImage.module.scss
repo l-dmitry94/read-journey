@@ -1,0 +1,17 @@
+@import '@/styles/mixins';
+
+.authImage {
+    @apply rounded-30 bg-background pt-5;
+
+    @include media-rules(tablet) {
+        @apply hidden;
+    }
+
+    @include media-rules(desktop) {
+        @apply flex w-1/2 items-end justify-center;
+    }
+}
+
+.image {
+    @apply mx-auto;
+}
