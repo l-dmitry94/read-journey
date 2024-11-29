@@ -1,0 +1,29 @@
+@import 'styles/mixins';
+
+.button {
+    @apply rounded-30 font-bold leading-[1.29] -tracking-tight outline-none transition-colors duration-150 ease-linear;
+
+    @include media-rules(tablet) {
+        @apply text-sm;
+    }
+}
+
+.contained {
+    @apply h-[2.625rem] w-[8.75rem] bg-primary text-background;
+
+    @include media-rules(tablet) {
+        @apply h-[3.25rem] w-[14rem] text-xl leading-none ;
+    }
+
+    &:is(:hover, :focus) {
+        @apply border border-primary/20 bg-transparent text-primary;
+    }
+}
+
+.outlined {
+    @apply border border-primary/20 px-5 py-[0.625rem] text-primary;
+
+    &:is(:hover, :focus) {
+        @apply bg-primary text-background;
+    }
+}

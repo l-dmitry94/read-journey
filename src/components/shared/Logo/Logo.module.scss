@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .logo {
     @apply inline-flex items-center gap-1;
 
@@ -7,5 +9,9 @@
 
     &Text {
         @apply hidden text-lg font-bold uppercase leading-none -tracking-tight;
+
+        @include media-rules(tablet) {
+            @apply block;
+        }
     }
 }

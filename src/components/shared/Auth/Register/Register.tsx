@@ -1,20 +1,16 @@
 import { Path } from 'react-hook-form';
+import { IRegisterData } from 'types/auth.types';
 
 import Form from 'components/ui/Form';
 import Input from 'components/ui/Input';
 
 import Auth from '../Auth';
+import AuthControl from '../AuthControl';
 
 import registerFields from './register-fields.json';
 import validationSchema from './validationSchema';
 
 import scss from './Register.module.scss';
-
-interface IRegisterData {
-    name: string;
-    email: string;
-    password: string;
-}
 
 const Register = () => {
     const handleSubmit = (data: IRegisterData) => {
@@ -39,7 +35,11 @@ const Register = () => {
                             ))}
                         </div>
 
-                        <button type="submit">Register</button>
+                        <AuthControl
+                            buttonText="Registration"
+                            link="/login"
+                            linkText="Already have an account?"
+                        />
                     </>
                 )}
             </Form>

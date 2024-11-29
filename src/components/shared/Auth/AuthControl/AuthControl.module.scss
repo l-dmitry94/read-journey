@@ -1,0 +1,18 @@
+@import 'styles/mixins';
+
+.authControl {
+    @apply flex items-center gap-[0.875rem];
+
+    @include media-rules(tablet) {
+        @apply gap-5;
+    }
+}
+
+.link {
+    @apply text-xs font-medium leading-[1.17] tracking-tight text-secondary underline;
+    text-decoration-skip-ink: none;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-[1.29];
+    }
+}

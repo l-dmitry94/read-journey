@@ -25,9 +25,17 @@ const Input = <T extends FieldValues>({
 
     const togglePassword = () => setShowPassword(!showPassword);
 
+    const isTouched = formState.touchedFields[name as keyof typeof formState.touchedFields];
+    const isError = formState.errors[name];
+
     return (
         <div className={scss.inputContainer}>
-            <div className={clsx(scss.inputWrapper, formState.errors[name] && scss.inputError)}>
+            <div
+                className={clsx(
+                    scss.inputWrapper,
+                    isTouched ? (isError ? scss.inputError : scss.inputSuccess) : ''
+                )}
+            >
                 <label htmlFor={name} className={scss.label}>
                     {`${label}:`}
                 </label>
@@ -48,10 +56,20 @@ const Input = <T extends FieldValues>({
                         <Icon variant={showPassword ? 'eye-off' : 'eye'} className={scss.icon} />
                     </button>
                 )}
+                {isTouched ? (
+                    isError ? (
+                        <Icon variant="error" className={clsx(scss.stateIcon, scss.errorIcon)} />
+                    ) : (
+                        <Icon
+                            variant="success"
+                            className={clsx(scss.stateIcon, scss.successIcon)}
+                        />
+                    )
+                ) : (
+                    ''
+                )}
             </div>
-            {formState.errors[name] && (
-                <p className={scss.error}>{formState.errors[name].message as string}</p>
-            )}
+            {isError && <p className={scss.error}>{isError.message as string}</p>}
         </div>
     );
 };

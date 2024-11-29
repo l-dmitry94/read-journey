@@ -12,6 +12,7 @@ interface IForm<T extends FieldValues> {
 const Form = <T extends FieldValues>({ onSubmit, validationSchema, children }: IForm<T>) => {
     const { register, handleSubmit, formState } = useForm<T>({
         resolver: yupResolver(validationSchema),
+        mode: 'onTouched',
     });
 
     return <form onSubmit={handleSubmit(onSubmit)}>{children({ register, formState })}</form>;

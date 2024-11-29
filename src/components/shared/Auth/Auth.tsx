@@ -9,9 +9,7 @@ import Logo from '../Logo';
 
 import scss from './Auth.module.scss';
 
-interface IAuth extends IChildren {}
-
-const Auth: FC<IAuth> = ({ children }) => {
+const Auth: FC<IChildren> = ({ children }) => {
     return (
         <section className={scss.auth}>
             <Container>
