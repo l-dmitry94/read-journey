@@ -1,0 +1,11 @@
+.logo {
+    @apply inline-flex items-center gap-1;
+
+    &Icon {
+        @apply h-4 w-[2.625rem] fill-primary;
+    }
+
+    &Text {
+        @apply hidden text-lg font-bold uppercase leading-none -tracking-tight;
+    }
+}

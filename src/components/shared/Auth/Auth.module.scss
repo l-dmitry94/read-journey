@@ -1,0 +1,35 @@
+.auth {
+    @apply py-5;
+}
+
+.wrapper {
+    @apply flex flex-col gap-[0.625rem];
+}
+
+.bg {
+    @apply bg-background rounded-30;
+}
+
+.content {
+    @apply px-5 pb-10 pt-5;
+}
+
+.header {
+    @apply mb-10;
+}
+
+.title {
+    @apply mb-5 text-[2rem] font-bold leading-none -tracking-tight;
+
+    &Color {
+        @apply text-primary/50;
+    }
+}
+
+.image {
+    @apply pt-5;
+}
+
+.imagePhone {
+    @apply mx-auto;
+}

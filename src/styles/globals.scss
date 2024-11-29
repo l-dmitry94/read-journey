@@ -1,0 +1,13 @@
+@import 'fonts';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-family: 'Gilroy', sans-serif;
+}
+
+body {
+    @apply font-gilroy bg-background-dark text-sm text-primary;
+}

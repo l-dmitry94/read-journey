@@ -1,0 +1,31 @@
+.inputWrapper {
+    @apply bg-background-light flex h-11 items-center gap-[0.625rem] rounded-xl border border-transparent pl-[0.875rem] pr-4 text-xs font-medium leading-[1.33] tracking-tight transition-colors duration-150 ease-linear;
+
+    &.inputError {
+        @apply border-error;
+    }
+
+    &.inputSuccess {
+        @apply border-success;
+    }
+
+    &:hover {
+        @apply border-primary/10;
+    }
+}
+
+.label {
+    @apply text-secondary flex h-full cursor-pointer items-center text-xs font-medium leading-[1.33] tracking-tight;
+}
+
+.input {
+    @apply h-full flex-1 bg-transparent outline-none;
+}
+
+.error {
+    @apply mt-2 px-[0.875rem] text-xs font-medium leading-[1.17] tracking-tight text-error;
+}
+
+.icon {
+    @apply h-5 w-5 fill-none stroke-primary;
+}
