@@ -1,4 +1,5 @@
 import { Path } from 'react-hook-form';
+import useAuth from 'store/auth/useAuth';
 import { IRegisterData } from 'types/auth.types';
 
 import Form from 'components/ui/Form';
@@ -13,8 +14,10 @@ import validationSchema from './validationSchema';
 import scss from './Register.module.scss';
 
 const Register = () => {
+    const { signup } = useAuth();
+
     const handleSubmit = (data: IRegisterData) => {
-        console.log(data);
+        signup(data);
     };
 
     return (

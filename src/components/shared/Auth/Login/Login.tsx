@@ -1,4 +1,5 @@
 import { Path } from 'react-hook-form';
+import useAuth from 'store/auth/useAuth';
 import { ILoginData } from 'types/auth.types';
 
 import Form from 'components/ui/Form';
@@ -13,8 +14,10 @@ import validationSchema from './validationSchema';
 import scss from './Login.module.scss';
 
 const Login = () => {
+    const { signin } = useAuth();
+
     const handleSubmit = (data: ILoginData) => {
-        console.log(data);
+        signin(data);
     };
 
     return (
