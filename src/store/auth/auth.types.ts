@@ -6,7 +6,8 @@ interface IUser {
 }
 export interface IAuthState {
     user: IUser | null;
-    token: string | null;
+    accessToken: string | null;
+    refreshToken: string | null;
     isLoggedIn: boolean;
     isLoading: boolean;
     error: string | null;
@@ -15,4 +16,5 @@ export interface IAuthState {
     signin: (body: ILoginData) => Promise<void>;
     current: () => Promise<void>;
     signout: () => Promise<void>;
+    updateTokens: (accessToken: string, refreshToken: string) => void;
 }

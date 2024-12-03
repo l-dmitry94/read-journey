@@ -1,3 +1,4 @@
+import useAuth from 'store/auth/useAuth';
 import { ILoginData, IRegisterData } from 'types/auth.types';
 
 import instance from './axios.config';
@@ -9,6 +10,21 @@ const setToken = (token?: string) => {
     }
     instance.defaults.headers.authorization = '';
 };
+
+instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        if (error.response.status === 401) {
+            const refreshToken = useAuth.getState().refreshToken;
+            if (refreshToken) {
+                const response = await instance.get(ENDPOINTS.auth.refresh);
+                useAuth.getState().updateTokens(response.data.token, response.data.refreshToken);
+                setToken(response.data.token);
+                return instance(error.config);
+            }
+        }
+    }
+);
 
 export const signupRequest = async (body: IRegisterData) => {
     const response = await instance.post(ENDPOINTS.auth.signup, body);

@@ -10,7 +10,8 @@ const useAuth = create<IAuthState>()(
     persist(
         devtools((set, get) => ({
             user: null,
-            token: null,
+            accessToken: null,
+            refreshToken: null,
             isLoggedIn: false,
             isLoading: false,
             error: null,
@@ -22,7 +23,8 @@ const useAuth = create<IAuthState>()(
                     const data = await signupRequest(body);
                     set({
                         user: { name: data.name, email: data.email },
-                        token: data.token,
+                        accessToken: data.token,
+                        refreshToken: data.refreshToken,
                         isLoggedIn: true,
                     });
                     toast.success('Registration successful');
@@ -42,10 +44,11 @@ const useAuth = create<IAuthState>()(
                     const data = await signinRequest(body);
                     set({
                         user: { name: data.name, email: data.email },
-                        token: data.token,
+                        accessToken: data.token,
+                        refreshToken: data.refreshToken,
                         isLoggedIn: true,
                     });
-                    toast.success('Login successful');
+                    toast.success('Welcome back!');
                 } catch (error) {
                     if (isAxiosError(error)) {
                         set({ error: error.response?.data.message });
@@ -59,11 +62,12 @@ const useAuth = create<IAuthState>()(
                 set({ isLoading: true, error: null });
 
                 try {
-                    const token = get().token!;
+                    const token = get().accessToken!;
                     const data = await currentRequest(token);
                     set({
                         user: { name: data.name, email: data.email },
-                        token: data.token,
+                        accessToken: data.token,
+                        refreshToken: data.refreshToken,
                         isLoggedIn: true,
                     });
                 } catch (error) {
@@ -79,7 +83,7 @@ const useAuth = create<IAuthState>()(
 
                 try {
                     await signoutRequest();
-                    set({ user: null, token: null, isLoggedIn: false });
+                    set({ user: null, accessToken: null, refreshToken: null, isLoggedIn: false });
                     toast.success('Logout successful');
                 } catch (error) {
                     if (isAxiosError(error)) {
@@ -90,11 +94,15 @@ const useAuth = create<IAuthState>()(
                     set({ isLoading: false });
                 }
             },
+            updateTokens: (newAccessToken, newRefreshToken) => {
+                set({ accessToken: newAccessToken, refreshToken: newRefreshToken });
+            },
         })),
         {
             name: 'auth',
             partialize: (state) => ({
-                token: state.token,
+                accessToken: state.accessToken,
+                refreshToken: state.refreshToken,
             }),
         }
     )
