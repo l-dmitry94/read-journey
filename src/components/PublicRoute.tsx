@@ -2,9 +2,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 import useAuth from 'store/auth/useAuth';
 
 const PublicRoute = () => {
-    const { isLoggedIn, token } = useAuth();
+    const { isLoggedIn, accessToken } = useAuth();
 
-    if (!isLoggedIn && token) {
+    if (!isLoggedIn && accessToken) {
         return <p>Loading...</p>;
     }
 
