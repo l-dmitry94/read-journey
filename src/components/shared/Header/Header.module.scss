@@ -1,0 +1,21 @@
+@import 'styles/mixins';
+
+.wrapper {
+    @apply relative flex items-center justify-between rounded-15 bg-background px-5 py-3;
+
+    @include media-rules(tablet) {
+        @apply p-4;
+    }
+}
+
+.leftPart {
+    @apply flex items-center;
+}
+
+.navList {
+    @apply absolute left-1/2 -translate-x-1/2;
+}
+
+.rightPart {
+    @apply flex items-center gap-[0.625rem];
+}

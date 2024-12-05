@@ -14,6 +14,7 @@ type IconVariant =
     | 'eye-off'
     | 'hourglass'
     | 'log-in'
+    | 'menu'
     | 'pie-chart'
     | 'success';
 

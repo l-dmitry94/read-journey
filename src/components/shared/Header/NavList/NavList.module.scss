@@ -1,0 +1,29 @@
+@import 'styles/mixins';
+
+.list {
+    @apply flex flex-col gap-6;
+
+    @include media-rules(tablet) {
+        @apply flex-row gap-8;
+    }
+}
+
+.link {
+    @apply relative inline-block font-medium leading-[1.33] tracking-tight text-secondary transition-colors duration-150 ease-linear;
+
+    &::after {
+        @apply absolute -bottom-[3px] left-0 h-[3px] w-full scale-0 rounded-lg bg-accent transition-transform duration-150 ease-linear content-[''];
+
+        @include media-rules(tablet) {
+            @apply -bottom-[6px];
+        }
+    }
+
+    &:global(.active) {
+        @apply text-primary;
+
+        &::after {
+            @apply scale-100;
+        }
+    }
+}

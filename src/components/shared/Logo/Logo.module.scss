@@ -14,4 +14,14 @@
             @apply block;
         }
     }
+
+    &TextMain {
+        @include media-rules(tablet) {
+            @apply hidden;
+        }
+
+        @include media-rules(desktop) {
+            @apply block;
+        }
+    }
 }

@@ -23,6 +23,7 @@ export default {
                 gilroy: ['var(--font-family)'],
             },
             borderRadius: {
+                15: '15px',
                 30: '30px',
             },
             fontSize: {

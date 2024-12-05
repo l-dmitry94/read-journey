@@ -1,0 +1,26 @@
+.burgerMenu {
+    & .drawer {
+        @apply bg-background-light;
+    }
+}
+
+.menuButton {
+    @apply flex items-center justify-center;
+}
+
+.menuIcon,
+.closeIcon {
+    @apply h-7 w-7 stroke-primary;
+}
+
+.closeButton {
+    @apply absolute right-10 top-9;
+}
+
+.navList {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.logoutButton {
+    @apply absolute bottom-10 left-1/2 -translate-x-1/2;
+}

@@ -14,15 +14,26 @@ const setToken = (token?: string) => {
 instance.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response.status === 401) {
+        if (error.response?.status === 401) {
             const refreshToken = useAuth.getState().refreshToken;
             if (refreshToken) {
-                const response = await instance.get(ENDPOINTS.auth.refresh);
-                useAuth.getState().updateTokens(response.data.token, response.data.refreshToken);
-                setToken(response.data.token);
-                return instance(error.config);
+                try {
+                    setToken(refreshToken);
+                    const response = await instance.get(ENDPOINTS.auth.refresh);
+                    useAuth
+                        .getState()
+                        .updateTokens(response.data.token, response.data.refreshToken);
+                    setToken(response.data.token);
+
+                    return instance(error.config);
+                } catch (refreshError) {
+                    useAuth.getState().signout();
+                    return Promise.reject(refreshError);
+                }
             }
         }
+
+        return Promise.reject(error);
     }
 );
 
@@ -50,7 +61,7 @@ export const currentRequest = async (token: string) => {
 };
 
 export const signoutRequest = async () => {
-    const response = await instance.get(ENDPOINTS.auth.signout);
+    const response = await instance.post(ENDPOINTS.auth.signout);
     setToken();
     return response.data;
 };

@@ -1,0 +1,9 @@
+@import 'styles/mixins';
+
+.sharedLayout {
+    @apply pb-10 pt-5;
+
+    @include media-rules(tablet) {
+        @apply py-8;
+    }
+}

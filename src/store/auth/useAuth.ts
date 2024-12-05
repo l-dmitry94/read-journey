@@ -95,7 +95,11 @@ const useAuth = create<IAuthState>()(
                 }
             },
             updateTokens: (newAccessToken, newRefreshToken) => {
-                set({ accessToken: newAccessToken, refreshToken: newRefreshToken });
+                set({
+                    accessToken: newAccessToken,
+                    refreshToken: newRefreshToken,
+                    isLoggedIn: true,
+                });
             },
         })),
         {

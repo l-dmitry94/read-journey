@@ -1,0 +1,29 @@
+@import 'styles/mixins';
+
+.userMenu {
+    @apply flex items-center gap-4;
+}
+
+.userInfo {
+    @apply flex items-center gap-2;
+}
+
+.firstLetterNameWrapper {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-primary/20 bg-background-light;
+}
+
+.firstLetterName {
+    @apply text-base font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply leading-[1.12];
+    }
+}
+
+.name {
+    @apply hidden;
+
+    @include media-rules(desktop) {
+        @apply block text-base font-bold leading-[1.12] tracking-tight;
+    }
+}

@@ -8,6 +8,10 @@
     --font-family: 'Gilroy', sans-serif;
 }
 
+* {
+    @apply outline-none;
+}
+
 body {
-    @apply font-gilroy bg-background-dark text-sm text-primary;
+    @apply bg-background-dark font-gilroy text-sm text-primary;
 }

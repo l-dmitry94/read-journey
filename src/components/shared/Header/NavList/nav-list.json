@@ -1,0 +1,10 @@
+[
+    {
+        "label": "Home",
+        "href": "/recommended"
+    },
+    {
+        "label": "My library",
+        "href": "/library"
+    }
+]
