@@ -1,0 +1,29 @@
+@import 'styles/mixins';
+
+.pagination {
+    @apply flex items-center gap-2;
+}
+
+.arrowButton {
+    @apply flex h-8 w-8 items-center justify-center rounded-full border border-primary/20 transition-colors duration-150 ease-linear;
+
+    @include media-rules(tablet) {
+        @apply h-10 w-10;
+    }
+
+    &:is(:hover, :focus) {
+        @apply border-primary bg-primary;
+
+        & .arrowIcon {
+            @apply stroke-background;
+        }
+    }
+}
+
+.arrowIcon {
+    @apply h-4 w-4 fill-none stroke-primary/20 transition-colors duration-150 ease-linear;
+
+    @include media-rules(tablet) {
+        @apply h-5 w-5;
+    }
+}

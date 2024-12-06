@@ -1,0 +1,25 @@
+@import 'styles/mixins';
+
+.recommendedBooks {
+    @apply rounded-30 bg-background px-5 py-10 flex-1;
+
+    @include media-rules(tablet) {
+        @apply p-10;
+    }
+
+    @include media-rules(desktop) {
+        @apply pb-[1.75rem];
+    }
+}
+
+.wrapper {
+    @apply mb-5 flex justify-between;
+}
+
+.title {
+    @apply text-xl font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-[1.75rem] leading-[1.14] -tracking-tight;
+    }
+}

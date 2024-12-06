@@ -1,0 +1,41 @@
+@import 'styles/mixins';
+
+.list {
+    @apply flex gap-5 overflow-hidden;
+
+    @include media-rules(tablet) {
+        @apply flex-wrap gap-6;
+    }
+
+    @include media-rules(desktop) {
+        @apply gap-5;
+    }
+}
+
+.item {
+    @apply shrink-0 basis-[calc((100%-20px)/2)];
+
+    @include media-rules(tablet) {
+        @apply basis-[calc((100%-72px)/4)];
+    }
+
+    @include media-rules(desktop) {
+        @apply basis-[calc((100%-80px)/5)];
+    }
+}
+
+.imageButton {
+    @apply mb-2 w-full;
+}
+
+.image {
+    @apply h-[13rem] w-full rounded-lg object-cover;
+}
+
+.title {
+    @apply mb-[0.125rem] font-bold leading-[1.29] tracking-tight;
+}
+
+.author {
+    @apply text-[0.625rem] font-medium leading-[1.2] tracking-tight text-secondary;
+}

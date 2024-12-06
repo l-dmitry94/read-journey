@@ -8,6 +8,8 @@ type IconVariant =
     | 'logo'
     | 'attachment'
     | 'chevron-up'
+    | 'chevron-left'
+    | 'chevron-right'
     | 'close'
     | 'error'
     | 'eye'
