@@ -1,0 +1,17 @@
+@import 'styles/mixins';
+
+.filters {
+    @apply shrink-0;
+}
+
+.title {
+    @apply mb-2 pl-[0.875rem] text-[0.625rem] font-medium leading-[1.2] tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-[1.29];
+    }
+}
+
+.inputsWrapper {
+    @apply mb-5 flex flex-col gap-2;
+}

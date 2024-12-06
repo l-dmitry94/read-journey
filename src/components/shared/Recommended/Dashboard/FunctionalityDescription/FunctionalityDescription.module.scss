@@ -1,0 +1,66 @@
+@import 'styles/mixins';
+
+.functionalityDescription {
+    @apply rounded-xl bg-background-light p-5;
+
+    @include media-rules(tablet) {
+        @apply rounded-30 p-8;
+    }
+}
+
+.title {
+    @apply mb-5 text-lg font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply mb-10 text-xl;
+    }
+}
+
+.list {
+    @apply mb-[0.875rem] flex flex-col gap-5;
+
+    @include media-rules(tablet) {
+        @apply mb-5;
+    }
+}
+
+.item {
+    @apply flex gap-3;
+}
+
+.numberWrapper {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary;
+
+    @include media-rules(tablet) {
+        @apply h-11 w-11;
+    }
+}
+
+.number {
+    @apply text-lg font-bold leading-none tracking-tight text-background;
+
+    @include media-rules(tablet) {
+        @apply text-xl;
+    }
+}
+
+.description {
+    @apply font-medium leading-[1.29] tracking-tight text-secondary;
+
+    & .highlighted {
+        @apply text-primary;
+    }
+}
+
+.linkWrapper {
+    @apply flex items-end justify-between;
+}
+
+.link {
+    @apply font-medium leading-[1.29] tracking-tight text-secondary underline;
+    text-decoration-skip-ink: none;
+}
+
+.linkIcon {
+    @apply fill-none stroke-primary;
+}

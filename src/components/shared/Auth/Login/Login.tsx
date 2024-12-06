@@ -22,7 +22,7 @@ const Login = () => {
 
     return (
         <Auth>
-            <Form onSubmit={handleSubmit} validationSchema={validationSchema}>
+            <Form<ILoginData> onSubmit={handleSubmit} validationSchema={validationSchema}>
                 {({ register, formState }) => (
                     <>
                         <div className={scss.inputsWrapper}>

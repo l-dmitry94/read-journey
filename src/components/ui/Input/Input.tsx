@@ -12,6 +12,7 @@ interface IInput<T extends FieldValues>
         IFormChildren<T> {
     name: Path<T>;
     label: string;
+    noBorder?: boolean;
 }
 const Input = <T extends FieldValues>({
     register,
@@ -19,6 +20,7 @@ const Input = <T extends FieldValues>({
     label,
     type,
     formState,
+    noBorder,
     ...rest
 }: IInput<T>) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +35,7 @@ const Input = <T extends FieldValues>({
             <div
                 className={clsx(
                     scss.inputWrapper,
-                    isTouched ? (isError ? scss.inputError : scss.inputSuccess) : ''
+                    isTouched && !noBorder ? (isError ? scss.inputError : scss.inputSuccess) : ''
                 )}
             >
                 <label htmlFor={name} className={scss.label}>
@@ -56,7 +58,7 @@ const Input = <T extends FieldValues>({
                         <Icon variant={showPassword ? 'eye-off' : 'eye'} className={scss.icon} />
                     </button>
                 )}
-                {isTouched ? (
+                {isTouched && !noBorder ? (
                     isError ? (
                         <Icon variant="error" className={clsx(scss.stateIcon, scss.errorIcon)} />
                     ) : (

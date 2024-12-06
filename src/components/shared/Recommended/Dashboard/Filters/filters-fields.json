@@ -1,0 +1,12 @@
+[
+    {
+        "name": "title",
+        "label": "Book title",
+        "type": "text"
+    },
+    {
+        "name": "author",
+        "label": "The author",
+        "type": "text"
+    }
+]

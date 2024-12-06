@@ -1,0 +1,22 @@
+@import 'styles/mixins';
+
+.quote {
+    @apply hidden items-center gap-[0.875rem] rounded-xl bg-background-light px-5 py-[0.875rem];
+
+    @include media-rules(desktop) {
+        @apply flex;
+    }
+}
+
+.image {
+    @apply h-10 w-10 shrink-0;
+}
+
+.text {
+    @apply font-medium leading-[1.29] tracking-tight text-secondary;
+    quotes: '"' '"';
+
+    & .highlight {
+        @apply text-primary;
+    }
+}

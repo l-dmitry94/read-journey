@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage';
+import RecommendedPage from 'pages/RecommendedPage';
 import RegisterPage from 'pages/RegisterPage';
 import useAuth from 'store/auth/useAuth';
 
@@ -25,7 +26,7 @@ const App = () => {
             <Route element={<PrivateRoute />}>
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Navigate to="recommended" replace />} />
-                    <Route path="recommended" element={<h1>Recommended</h1>} />
+                    <Route path="recommended" element={<RecommendedPage />} />
                     <Route path="library" element={<h1>Library</h1>} />
                 </Route>
             </Route>

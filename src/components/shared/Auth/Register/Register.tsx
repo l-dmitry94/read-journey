@@ -22,7 +22,7 @@ const Register = () => {
 
     return (
         <Auth>
-            <Form onSubmit={handleSubmit} validationSchema={validationSchema}>
+            <Form<IRegisterData> onSubmit={handleSubmit} validationSchema={validationSchema}>
                 {({ register, formState }) => (
                     <>
                         <div className={scss.inputsWrapper}>
