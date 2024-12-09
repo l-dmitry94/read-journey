@@ -6,6 +6,9 @@ const ENDPOINTS = {
         refresh: '/users/current/refresh',
         signout: '/users/signout',
     },
+    books: {
+        recommend: '/books/recommend',
+    },
 };
 
 export default ENDPOINTS;

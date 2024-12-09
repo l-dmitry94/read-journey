@@ -1,8 +1,10 @@
 import useAuth from 'store/auth/useAuth';
 import { ILoginData, IRegisterData } from 'types/auth.types';
 
-import instance from './axios.config';
-import ENDPOINTS from './endpoints';
+import instance from '../axios.config';
+import ENDPOINTS from '../endpoints';
+
+import { IAuthResponse, ICurrentResponse, ISignoutResponse, ITokenResponse } from './auth.types';
 
 const setToken = (token?: string) => {
     if (token) {
@@ -14,18 +16,23 @@ const setToken = (token?: string) => {
 instance.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response?.status === 401) {
+        const originalRequest = error.config;
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
             const refreshToken = useAuth.getState().refreshToken;
             if (refreshToken) {
                 try {
-                    setToken(refreshToken);
-                    const response = await instance.get(ENDPOINTS.auth.refresh);
+                    const response = await instance.get<ITokenResponse>(ENDPOINTS.auth.refresh, {
+                        headers: {
+                            Authorization: `Bearer ${refreshToken}`,
+                        },
+                    });
                     useAuth
                         .getState()
                         .updateTokens(response.data.token, response.data.refreshToken);
                     setToken(response.data.token);
 
-                    return instance(error.config);
+                    return instance(originalRequest);
                 } catch (refreshError) {
                     useAuth.getState().signout();
                     return Promise.reject(refreshError);
@@ -38,30 +45,25 @@ instance.interceptors.response.use(
 );
 
 export const signupRequest = async (body: IRegisterData) => {
-    const response = await instance.post(ENDPOINTS.auth.signup, body);
+    const response = await instance.post<IAuthResponse>(ENDPOINTS.auth.signup, body);
     setToken(response.data.token);
     return response.data;
 };
 
 export const signinRequest = async (body: ILoginData) => {
-    const response = await instance.post(ENDPOINTS.auth.signin, body);
+    const response = await instance.post<IAuthResponse>(ENDPOINTS.auth.signin, body);
     setToken(response.data.token);
     return response.data;
 };
 
 export const currentRequest = async (token: string) => {
     setToken(token);
-    try {
-        const response = await instance.get(ENDPOINTS.auth.current);
-        return response.data;
-    } catch (error) {
-        setToken();
-        throw error;
-    }
+    const response = await instance.get<ICurrentResponse>(ENDPOINTS.auth.current);
+    return response.data;
 };
 
 export const signoutRequest = async () => {
-    const response = await instance.post(ENDPOINTS.auth.signout);
+    const response = await instance.post<ISignoutResponse>(ENDPOINTS.auth.signout);
     setToken();
     return response.data;
 };

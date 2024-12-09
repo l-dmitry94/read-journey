@@ -1,6 +1,11 @@
 import { toast } from 'react-toastify';
 import { isAxiosError } from 'axios';
-import { currentRequest, signinRequest, signoutRequest, signupRequest } from 'services/auth.api';
+import {
+    currentRequest,
+    signinRequest,
+    signoutRequest,
+    signupRequest,
+} from 'services/auth/auth.api';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
@@ -82,9 +87,9 @@ const useAuth = create<IAuthState>()(
                 set({ isLoading: true, error: null });
 
                 try {
-                    await signoutRequest();
+                    const data = await signoutRequest();
                     set({ user: null, accessToken: null, refreshToken: null, isLoggedIn: false });
-                    toast.success('Logout successful');
+                    toast.success(data.message);
                 } catch (error) {
                     if (isAxiosError(error)) {
                         set({ error: error.response?.data.message });
