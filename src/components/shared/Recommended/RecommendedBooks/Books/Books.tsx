@@ -1,93 +1,42 @@
 import { useEffect } from 'react';
-import { book_1, book_2 } from 'assets/img/temp';
 import { useMedia } from 'hooks/useMedia';
 import useBooks from 'store/books/useBooks';
 
 import scss from './Books.module.scss';
 
 const Books = () => {
-    const { getBooks, perPage, page, changeLimit, books } = useBooks();
-    const { isMobile, isTablet, isDesktop } = useMedia();
+    const { getBooks, page, books, author, title, resetFilter } = useBooks();
+    const { isMobile, isTablet } = useMedia();
+
+    const limit = isMobile ? 2 : isTablet ? 8 : 10;
 
     useEffect(() => {
-        if (isMobile) {
-            changeLimit(2);
-        } else if (isTablet) {
-            changeLimit(8);
-        } else if (isDesktop) {
-            changeLimit(10);
+        if (author || title) {
+            resetFilter(limit);
         }
-    }, [changeLimit, isDesktop, isMobile, isTablet]);
+    }, [author, limit, resetFilter, title]);
 
     useEffect(() => {
-        getBooks(page, perPage);
-    }, [getBooks, page, perPage]);
-
-    console.log(books);
+        getBooks({ title, author, page, limit });
+    }, [getBooks, page, limit, author, title]);
 
     return (
         <section className={scss.books}>
             <ul className={scss.list}>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_1} alt="Lovers of Justice" className={scss.image} />
-                    </button>
+                {books.map(({ _id, imageUrl, title, author }) => (
+                    <li key={_id} className={scss.item}>
+                        <button className={scss.imageButton}>
+                            <img src={imageUrl} alt={title} className={scss.image} />
+                        </button>
 
-                    <div className={scss.info}>
-                        <p className={scss.title}>Lovers of Justice</p>
-                        <p className={scss.author}>Yuri Andrukhovych</p>
-                    </div>
-                </li>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_2} alt="It doesn't hurt" className={scss.image} />
-                    </button>
-
-                    <div className={scss.info}>
-                        <p className={scss.title}>It doesn't hurt</p>
-                        <p className={scss.author}>Kateryna Babkina</p>
-                    </div>
-                </li>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_1} alt="Lovers of Justice" className={scss.image} />
-                    </button>
-
-                    <div className={scss.info}>
-                        <p className={scss.title}>Lovers of Justice</p>
-                        <p className={scss.author}>Yuri Andrukhovych</p>
-                    </div>
-                </li>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_2} alt="It doesn't hurt" className={scss.image} />
-                    </button>
-
-                    <div className={scss.info}>
-                        <p className={scss.title}>It doesn't hurt</p>
-                        <p className={scss.author}>Kateryna Babkina</p>
-                    </div>
-                </li>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_1} alt="Lovers of Justice" className={scss.image} />
-                    </button>
-
-                    <div className={scss.info}>
-                        <p className={scss.title}>Lovers of Justice</p>
-                        <p className={scss.author}>Yuri Andrukhovych</p>
-                    </div>
-                </li>
-                <li className={scss.item}>
-                    <button className={scss.imageButton}>
-                        <img src={book_2} alt="It doesn't hurt" className={scss.image} />
-                    </button>
-
-                    <div className={scss.info}>
-                        <p className={scss.title}>It doesn't hurt</p>
-                        <p className={scss.author}>Kateryna Babkina</p>
-                    </div>
-                </li>
+                        <div className={scss.info}>
+                            <p title={title} className={scss.title}>
+                                {title}
+                            </p>
+                            <p className={scss.author}>{author}</p>
+                        </div>
+                    </li>
+                ))}
             </ul>
         </section>
     );

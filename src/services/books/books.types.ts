@@ -6,3 +6,10 @@ export interface IBooksResponse {
     page: number;
     perPage: number;
 }
+
+export interface IBooksParams {
+    title: string | undefined;
+    author: string | undefined;
+    page: number;
+    limit: number;
+}

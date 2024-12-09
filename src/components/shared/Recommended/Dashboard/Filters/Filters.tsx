@@ -1,4 +1,5 @@
 import { Path } from 'react-hook-form';
+import useBooks from 'store/books/useBooks';
 import { IFilterData } from 'types/filters.types';
 
 import Button from 'components/ui/Button';
@@ -11,7 +12,19 @@ import validationSchema from './validationSchema';
 import scss from './Filters.module.scss';
 
 const Filters = () => {
-    const handleSubmit = (data: IFilterData) => console.log(data);
+    const { setFilter } = useBooks();
+
+    const handleSubmit = (data: IFilterData) => {
+        const filteredData = Object.fromEntries(
+            Object.entries(data).filter(([, value]) => value !== '')
+        );
+
+        const { title, author } = filteredData;
+
+        if (title || author) {
+            setFilter(title, author);
+        }
+    };
 
     return (
         <section className={scss.filters}>

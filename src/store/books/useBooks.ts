@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { isAxiosError } from 'axios';
 import { recommendBooks } from 'services/books/books.api';
 import { create } from 'zustand';
@@ -6,7 +7,9 @@ import { devtools } from 'zustand/middleware';
 import { IBooksState } from './books.types';
 
 const useBooks = create<IBooksState>()(
-    devtools((set) => ({
+    devtools((set, get) => ({
+        title: undefined,
+        author: undefined,
         books: [],
         page: 1,
         totalPages: 1,
@@ -14,11 +17,14 @@ const useBooks = create<IBooksState>()(
         isLoading: false,
         error: null,
 
-        getBooks: async (page, limit) => {
+        getBooks: async (params) => {
             set({ isLoading: true, error: null });
 
             try {
-                const data = await recommendBooks(page, limit);
+                const data = await recommendBooks(params);
+                if (!data.results.length) {
+                    toast.warn('Not found');
+                }
                 set({
                     books: data.results,
                     page: data.page,
@@ -34,7 +40,21 @@ const useBooks = create<IBooksState>()(
             }
         },
 
-        changeLimit: (limit) => set({ perPage: limit }),
+        nextPage: () => {
+            set({ page: get().page + 1 });
+        },
+
+        prevPage: () => {
+            set({ page: get().page - 1 });
+        },
+
+        setFilter: (title, author) => {
+            set({ title, author });
+        },
+
+        resetFilter: (limit) => {
+            set({ title: undefined, author: undefined, page: get().page, perPage: limit });
+        },
     }))
 );
 
