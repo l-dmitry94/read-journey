@@ -1,4 +1,5 @@
 import { Path } from 'react-hook-form';
+import { useMedia } from 'hooks/useMedia';
 import useBooks from 'store/books/useBooks';
 import { IFilterData } from 'types/filters.types';
 
@@ -12,7 +13,10 @@ import validationSchema from './validationSchema';
 import scss from './Filters.module.scss';
 
 const Filters = () => {
-    const { setFilter } = useBooks();
+    const { getBooks } = useBooks();
+    const { isMobile, isTablet } = useMedia();
+
+    const limit = isMobile ? 2 : isTablet ? 8 : 10;
 
     const handleSubmit = (data: IFilterData) => {
         const filteredData = Object.fromEntries(
@@ -21,9 +25,7 @@ const Filters = () => {
 
         const { title, author } = filteredData;
 
-        if (title || author) {
-            setFilter(title, author);
-        }
+        getBooks({ title, author, page: 1, limit });
     };
 
     return (

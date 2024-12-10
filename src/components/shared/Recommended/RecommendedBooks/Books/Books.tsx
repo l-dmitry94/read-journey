@@ -5,20 +5,14 @@ import useBooks from 'store/books/useBooks';
 import scss from './Books.module.scss';
 
 const Books = () => {
-    const { getBooks, page, books, author, title, resetFilter } = useBooks();
+    const { getBooks, page, books } = useBooks();
     const { isMobile, isTablet } = useMedia();
 
     const limit = isMobile ? 2 : isTablet ? 8 : 10;
 
     useEffect(() => {
-        if (author || title) {
-            resetFilter(limit);
-        }
-    }, [author, limit, resetFilter, title]);
-
-    useEffect(() => {
-        getBooks({ title, author, page, limit });
-    }, [getBooks, page, limit, author, title]);
+        getBooks({ page, limit });
+    }, [getBooks, page, limit]);
 
     return (
         <section className={scss.books}>

@@ -8,8 +8,6 @@ import { IBooksState } from './books.types';
 
 const useBooks = create<IBooksState>()(
     devtools((set, get) => ({
-        title: undefined,
-        author: undefined,
         books: [],
         page: 1,
         totalPages: 1,
@@ -46,14 +44,6 @@ const useBooks = create<IBooksState>()(
 
         prevPage: () => {
             set({ page: get().page - 1 });
-        },
-
-        setFilter: (title, author) => {
-            set({ title, author });
-        },
-
-        resetFilter: (limit) => {
-            set({ title: undefined, author: undefined, page: get().page, perPage: limit });
         },
     }))
 );

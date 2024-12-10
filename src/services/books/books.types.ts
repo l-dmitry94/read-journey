@@ -8,8 +8,8 @@ export interface IBooksResponse {
 }
 
 export interface IBooksParams {
-    title: string | undefined;
-    author: string | undefined;
     page: number;
     limit: number;
+    title?: string;
+    author?: string;
 }
