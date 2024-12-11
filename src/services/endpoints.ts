@@ -8,6 +8,7 @@ const ENDPOINTS = {
     },
     books: {
         recommend: '/books/recommend',
+        addRecommend: '/books/add',
     },
 };
 

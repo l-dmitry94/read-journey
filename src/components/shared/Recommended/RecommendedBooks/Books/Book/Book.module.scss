@@ -1,0 +1,53 @@
+@import 'styles/mixins';
+
+.book {
+    @apply px-[4.375rem] py-10 ;
+
+    @include media-rules(tablet) {
+        @apply py-[3.125rem] px-[5.75rem];
+    }
+}
+
+.imageWrapper {
+    @apply mx-auto mb-4 h-[13.375rem] w-[8.75rem];
+
+    @include media-rules(tablet) {
+        @apply h-[14.625rem] w-[9.625rem];
+    }
+}
+
+.image {
+    @apply h-full w-full rounded-lg;
+}
+
+.info {
+    @apply mb-5 text-center;
+
+    @include media-rules(tablet) {
+        @apply mb-4;
+    }
+}
+
+.title {
+    @apply mb-[0.125rem] text-lg font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-xl;
+    }
+}
+
+.author {
+    @apply mb-1 text-xs font-medium leading-[1.17] tracking-tight text-secondary;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-[1.29];
+    }
+}
+
+.pages {
+    @apply text-[0.625rem] font-medium leading-[1.2] tracking-tight;
+}
+
+.buttonWrapper {
+    @apply text-center
+}
