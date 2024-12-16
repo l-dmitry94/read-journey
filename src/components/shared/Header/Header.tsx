@@ -1,8 +1,7 @@
 import { useMedia } from 'hooks/useMedia';
 
 import Container from 'components/ui/Container';
-
-import Logo from '../Logo';
+import Logo from 'components/ui/Logo';
 
 import BurgerMenu from './BurgerMenu';
 import NavList from './NavList';

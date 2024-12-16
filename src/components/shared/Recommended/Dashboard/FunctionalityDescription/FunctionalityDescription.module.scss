@@ -4,7 +4,7 @@
     @apply rounded-xl bg-background-light p-5;
 
     @include media-rules(tablet) {
-        @apply rounded-30 p-8;
+        @apply p-8;
     }
 }
 

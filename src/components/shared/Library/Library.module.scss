@@ -1,0 +1,21 @@
+@import 'styles/mixins';
+
+.library {
+    @apply pb-10 pt-[0.625rem];
+
+    @include media-rules(tablet) {
+        @apply pt-4 pb-8;
+    }
+}
+
+.wrapper {
+    @apply flex flex-col gap-[0.625rem];
+
+    @include media-rules(tablet) {
+        @apply gap-4;
+    }
+
+    @include media-rules(desktop) {
+        @apply flex-row;
+    }
+}

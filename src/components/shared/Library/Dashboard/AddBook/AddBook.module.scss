@@ -1,12 +1,11 @@
 @import 'styles/mixins';
 
-.filters {
-    @apply shrink-0 ;
+.addBook {
+    @apply shrink-0;
 
     @include media-rules(tablet) {
         @apply w-[18.5rem];
     }
-        
 }
 
 .title {

@@ -7,6 +7,12 @@ export interface IBooksResponse {
     perPage: number;
 }
 
+export interface IRecommendBooksResponse extends Omit<IBook, 'recommend'> {
+    status: 'unread' | 'in-progress' | 'done';
+    owner: string;
+    progress: [];
+}
+
 export interface IBooksParams {
     page: number;
     limit: number;

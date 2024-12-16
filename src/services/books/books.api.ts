@@ -1,7 +1,7 @@
 import instance from 'services/axios.config';
 import ENDPOINTS from 'services/endpoints';
 
-import { IBooksParams, IBooksResponse } from './books.types';
+import { IBooksParams, IBooksResponse, IRecommendBooksResponse } from './books.types';
 
 export const recommendBooks = async (params: IBooksParams) => {
     const response = await instance.get<IBooksResponse>(ENDPOINTS.books.recommend, {
@@ -11,6 +11,8 @@ export const recommendBooks = async (params: IBooksParams) => {
 };
 
 export const addRecommendBook = async (id: string) => {
-    const response = await instance.post(`${ENDPOINTS.books.addRecommend}/${id}`);
+    const response = await instance.post<IRecommendBooksResponse>(
+        `${ENDPOINTS.books.addRecommend}/${id}`
+    );
     return response.data;
 };

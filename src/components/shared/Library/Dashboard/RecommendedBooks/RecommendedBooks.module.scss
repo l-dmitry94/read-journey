@@ -1,0 +1,58 @@
+@import 'styles/mixins';
+
+.recommendedBooks {
+    @apply flex-1 rounded-xl bg-background-light p-5;
+
+    @include media-rules(tablet) {
+        @apply pr-10;
+    }
+}
+
+.title {
+    @apply mb-[0.875rem] text-lg font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-xl mb-5;
+    }
+}
+
+.list {
+    @apply flex gap-5 overflow-hidden mb-3;
+
+    @include media-rules(tablet) {
+        @apply mb-[0.875rem];
+    }
+}
+
+.item {
+    @apply basis-[calc((100%-40px)/3)];
+}
+
+.imageButton {
+    @apply mb-2 w-full;
+}
+
+.image {
+    @apply h-[6.75rem] w-full rounded-lg;
+}
+
+.itemTitle {
+    @apply mb-2 w-[4.375rem] overflow-hidden text-ellipsis whitespace-nowrap text-[0.625rem] font-bold leading-[1.12] tracking-tight;
+}
+
+.author {
+    @apply w-[4.375rem] overflow-hidden text-ellipsis whitespace-nowrap text-[0.625rem] font-medium leading-[1.2] tracking-tight text-secondary;
+}
+
+.linkWrapper {
+    @apply flex items-end justify-between;
+}
+
+.link {
+    @apply font-medium leading-[1.29] tracking-tight text-secondary underline;
+    text-decoration-skip-ink: none;
+}
+
+.linkIcon {
+    @apply fill-none stroke-primary;
+}

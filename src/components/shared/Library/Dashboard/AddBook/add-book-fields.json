@@ -1,0 +1,17 @@
+[
+    {
+        "name": "title",
+        "label": "Book title",
+        "type": "text"
+    },
+    {
+        "name": "author",
+        "label": "The author",
+        "type": "text"
+    },
+    {
+        "name": "totalPages",
+        "label": "Number of pages",
+        "type": "number"
+    }
+]

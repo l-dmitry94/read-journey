@@ -4,8 +4,7 @@ import clsx from 'clsx';
 import { IChildren } from 'types/children.types';
 
 import Container from 'components/ui/Container';
-
-import Logo from '../Logo';
+import Logo from 'components/ui/Logo';
 
 import scss from './Auth.module.scss';
 

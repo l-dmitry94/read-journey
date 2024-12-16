@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import LibraryPage from 'pages/LibraryPage';
 import LoginPage from 'pages/LoginPage';
 import RecommendedPage from 'pages/RecommendedPage';
 import RegisterPage from 'pages/RegisterPage';
@@ -27,7 +28,7 @@ const App = () => {
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Navigate to="recommended" replace />} />
                     <Route path="recommended" element={<RecommendedPage />} />
-                    <Route path="library" element={<h1>Library</h1>} />
+                    <Route path="library" element={<LibraryPage />} />
                 </Route>
             </Route>
         </Routes>
