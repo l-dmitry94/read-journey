@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import instance from 'services/axios.config';
-import { IBooksResponse } from 'services/books/books.types';
-import ENDPOINTS from 'services/endpoints';
+import { recommendBooks } from 'services/books/books.api';
 import { IBook } from 'types/books.types';
 
 import Book from 'components/shared/Recommended/RecommendedBooks/Books/Book';
@@ -19,10 +17,8 @@ const RecommendedBooks = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await instance.get<IBooksResponse>(ENDPOINTS.books.recommend, {
-                    params: { page: 1, limit: 3 },
-                });
-                setBooks(response.data.results);
+                const data = await recommendBooks({ page: 1, limit: 3 });
+                setBooks(data.results);
             } catch (error) {
                 console.log(error);
             }

@@ -1,0 +1,33 @@
+@import 'styles/mixins';
+
+.successModal {
+    @apply mx-auto max-w-[15.125rem] py-[3.75rem] text-center;
+
+    @include media-rules(tablet) {
+        @apply max-w-[15.125rem] py-[3.125rem];
+    }
+}
+
+.image {
+    @apply mx-auto mb-5 h-[3.125rem] w-[3.125rem];
+
+    @include media-rules(tablet) {
+        @apply h-[4.375rem] w-[4.25rem] mb-8;
+    }
+}
+
+.title {
+    @apply mb-[0.625rem] text-lg font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply mb-[0.875rem] text-xl;
+    }
+}
+
+.text {
+    @apply font-medium leading-[1.29] tracking-tight text-secondary;
+
+    .highlight {
+        @apply text-primary;
+    }
+}

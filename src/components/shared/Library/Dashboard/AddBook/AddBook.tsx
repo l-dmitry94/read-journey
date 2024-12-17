@@ -1,17 +1,29 @@
+import { useState } from 'react';
 import { Path } from 'react-hook-form';
+import useBooks from 'store/books/useBooks';
 import { IAddBookData } from 'types/books.types';
 
 import Button from 'components/ui/Button';
 import Form from 'components/ui/Form';
 import Input from 'components/ui/Input';
+import Modal from 'components/ui/Modal';
 
 import addBookFields from './add-book-fields.json';
+import SuccessModal from './SuccessModal';
 import validationSchema from './validationSchema';
 
 import scss from './AddBook.module.scss';
 
 const AddBook = () => {
-    const handleSubmit = (data: IAddBookData) => console.log(data);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const { addBook, getLibraryBooks } = useBooks();
+
+    const handleSubmit = async (data: IAddBookData) => {
+        const normalizedData = { ...data, totalPages: Number(data.totalPages) };
+        await addBook(normalizedData, () => setModalIsOpen(true));
+        await getLibraryBooks();
+    };
+
     return (
         <section className={scss.addBook}>
             <p className={scss.title}>Create your library:</p>
@@ -38,6 +50,10 @@ const AddBook = () => {
                     </>
                 )}
             </Form>
+
+            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} isSuccess>
+                <SuccessModal />
+            </Modal>
         </section>
     );
 };

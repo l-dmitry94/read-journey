@@ -33,7 +33,7 @@
 }
 
 .title {
-    @apply mb-[0.125rem] font-bold leading-[1.29] tracking-tight w-[8.5rem] whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply mb-[0.125rem] w-[8.5rem] overflow-hidden text-ellipsis whitespace-nowrap font-bold capitalize leading-[1.29] tracking-tight;
 }
 
 .author {

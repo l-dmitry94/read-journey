@@ -14,11 +14,13 @@ type IconVariant =
     | 'error'
     | 'eye'
     | 'eye-off'
+    | 'questionmark'
     | 'hourglass'
     | 'log-in'
     | 'menu'
     | 'pie-chart'
-    | 'success';
+    | 'success'
+    | 'trash';
 
 interface IIcon extends SVGProps<SVGSVGElement> {
     variant: IconVariant;

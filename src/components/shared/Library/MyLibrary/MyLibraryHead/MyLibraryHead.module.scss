@@ -1,0 +1,71 @@
+@import 'styles/mixins';
+
+.myLibraryHead {
+    @apply mb-[0.875rem] flex justify-between;
+}
+
+.title {
+    @apply text-xl font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-[1.75rem] leading-[1.14] -tracking-tight;
+    }
+}
+
+.selectContainer {
+    @apply rounded-xl border border-[#3e3e3e];
+
+    & .select {
+        &:global(__control) {
+            @apply h-10 min-h-0 w-[7.5rem] px-[0.875rem] py-3 cursor-pointer;
+
+            @include media-rules(tablet) {
+                @apply h-[2.875rem] w-[9.5rem] py-[0.875rem];
+            }
+        }
+
+        &:global(__value-container) {
+            @apply block flex-none;
+        }
+
+        &:global(__single-value) {
+            @apply text-xs font-medium leading-[1.33] tracking-tight;
+
+            @include media-rules(tablet) {
+                @apply text-sm leading-[1.29];
+            }
+        }
+
+        &:global(__indicators) {
+            @apply absolute right-[0.875rem] top-1/2 -translate-y-1/2;
+
+            & svg {
+                @apply h-4 w-4;
+            }
+        }
+
+        &:global(__menu) {
+            @apply top-[calc(100%+0.25rem)] rounded-xl bg-background-light p-[0.875rem];
+
+            @include media-rules(tablet) {
+                @apply top-[calc(100%+0.5rem)];
+            }
+        }
+
+        &:global(__menu-list) {
+            @apply flex flex-col gap-2;
+        }
+
+        &:global(__option) {
+            @apply cursor-pointer text-xs font-medium leading-[1.33] tracking-tight text-secondary;
+
+            @include media-rules(tablet) {
+                @apply text-sm leading-[1.29];
+            }
+        }
+
+        &:global(__option--is-selected) {
+            @apply text-primary;
+        }
+    }
+}

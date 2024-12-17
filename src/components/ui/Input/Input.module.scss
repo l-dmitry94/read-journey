@@ -21,7 +21,7 @@
 }
 
 .label {
-    @apply flex h-full cursor-pointer items-center text-xs font-medium leading-[1.33] tracking-tight text-secondary;
+    @apply flex h-full cursor-pointer items-center whitespace-nowrap text-xs font-medium leading-[1.33] tracking-tight text-secondary;
 
     @include media-rules(tablet) {
         @apply text-sm leading-[1.29];

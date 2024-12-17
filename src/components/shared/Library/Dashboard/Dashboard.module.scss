@@ -8,6 +8,6 @@
     }
 
     @include media-rules(desktop) {
-        @apply w-[22.125rem] flex-col pt-10;
+        @apply w-[22.125rem] flex-col pt-10 gap-[4.875rem];
     }
 }

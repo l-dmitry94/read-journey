@@ -7,8 +7,14 @@ export interface IBooksResponse {
     perPage: number;
 }
 
+export enum BookStatus {
+    unread = 'unread',
+    'in-progress' = 'in-progress',
+    done = 'done',
+}
+
 export interface IRecommendBooksResponse extends Omit<IBook, 'recommend'> {
-    status: 'unread' | 'in-progress' | 'done';
+    status: BookStatus;
     owner: string;
     progress: [];
 }
@@ -18,4 +24,9 @@ export interface IBooksParams {
     limit: number;
     title?: string;
     author?: string;
+}
+
+export interface IRemoveBook {
+    id: string;
+    message: string;
 }

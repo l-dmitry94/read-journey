@@ -12,12 +12,12 @@
     @apply mb-[0.875rem] text-lg font-bold leading-none tracking-tight;
 
     @include media-rules(tablet) {
-        @apply text-xl mb-5;
+        @apply mb-5 text-xl;
     }
 }
 
 .list {
-    @apply flex gap-5 overflow-hidden mb-3;
+    @apply mb-3 flex gap-5 overflow-hidden;
 
     @include media-rules(tablet) {
         @apply mb-[0.875rem];
@@ -37,7 +37,7 @@
 }
 
 .itemTitle {
-    @apply mb-2 w-[4.375rem] overflow-hidden text-ellipsis whitespace-nowrap text-[0.625rem] font-bold leading-[1.12] tracking-tight;
+    @apply mb-2 w-[4.375rem] overflow-hidden text-ellipsis whitespace-nowrap text-[0.625rem] font-bold capitalize leading-[1.12] tracking-tight;
 }
 
 .author {
