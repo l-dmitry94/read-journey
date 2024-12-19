@@ -11,6 +11,7 @@ const ENDPOINTS = {
         add: '/books/add',
         own: '/books/own',
         remove: '/books/remove',
+        get: '/books',
     },
 };
 

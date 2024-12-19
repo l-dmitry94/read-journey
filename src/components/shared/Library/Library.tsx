@@ -1,7 +1,9 @@
 import Container from 'components/ui/Container';
+import Dashboard from 'components/ui/Dashboard';
 
-import Dashboard from './Dashboard';
+import AddBook from './AddBook';
 import MyLibrary from './MyLibrary';
+import RecommendedBooks from './RecommendedBooks';
 
 import scss from './Library.module.scss';
 
@@ -10,7 +12,11 @@ const Library = () => {
         <section className={scss.library}>
             <Container>
                 <div className={scss.wrapper}>
-                    <Dashboard />
+                    <Dashboard>
+                        <AddBook />
+                        <RecommendedBooks />
+                    </Dashboard>
+
                     <MyLibrary />
                 </div>
             </Container>

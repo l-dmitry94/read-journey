@@ -1,6 +1,9 @@
 import Container from 'components/ui/Container';
+import Dashboard from 'components/ui/Dashboard';
 
-import Dashboard from './Dashboard';
+import Filters from './Filters';
+import FunctionalityDescription from './FunctionalityDescription';
+import Quote from './Quote';
 import RecommendedBooks from './RecommendedBooks';
 
 import scss from './Recommended.module.scss';
@@ -10,7 +13,12 @@ const Recommended = () => {
         <section className={scss.recommended}>
             <Container>
                 <div className={scss.wrapper}>
-                    <Dashboard />
+                    <Dashboard>
+                        <Filters />
+                        <FunctionalityDescription />
+                        <Quote />
+                    </Dashboard>
+
                     <RecommendedBooks />
                 </div>
             </Container>

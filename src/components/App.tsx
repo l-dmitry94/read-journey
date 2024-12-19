@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LibraryPage from 'pages/LibraryPage';
 import LoginPage from 'pages/LoginPage';
+import ReadingPage from 'pages/ReadingPage';
 import RecommendedPage from 'pages/RecommendedPage';
 import RegisterPage from 'pages/RegisterPage';
 import useAuth from 'store/auth/useAuth';
@@ -29,6 +30,7 @@ const App = () => {
                     <Route index element={<Navigate to="recommended" replace />} />
                     <Route path="recommended" element={<RecommendedPage />} />
                     <Route path="library" element={<LibraryPage />} />
+                    <Route path="reading/:bookId" element={<ReadingPage />} />
                 </Route>
             </Route>
         </Routes>

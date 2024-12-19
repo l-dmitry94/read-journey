@@ -32,3 +32,8 @@ export const addBook = async (body: IAddBookData) => {
     const response = await instance.post<IRecommendBooksResponse>(ENDPOINTS.books.add, body);
     return response.data;
 };
+
+export const getOneBook = async (id: string) => {
+    const response = await instance.get<IRecommendBooksResponse>(`${ENDPOINTS.books.get}/${id}`);
+    return response.data;
+};

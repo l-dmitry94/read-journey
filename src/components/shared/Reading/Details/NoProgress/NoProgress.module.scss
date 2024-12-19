@@ -1,0 +1,41 @@
+@import 'styles/mixins';
+
+.noProgress {
+    @apply pb-5;
+
+    @include media-rules(tablet) {
+        @apply pb-[3.25rem];
+    }
+}
+
+.title {
+    @apply mb-[0.875rem] text-lg font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply text-xl;
+    }
+}
+
+.text {
+    @apply mb-5 font-medium leading-[1.29] tracking-tight text-secondary;
+
+    @include media-rules(tablet) {
+        @apply mb-[3.125rem];
+    }
+}
+
+.imageWrapper {
+    @apply mx-auto flex h-[5rem] w-[5rem] items-center justify-center rounded-full bg-background-light;
+
+    @include media-rules(tablet) {
+        @apply h-[6.25rem] w-[6.25rem];
+    }
+}
+
+.image {
+    @apply h-8 w-8;
+
+    @include media-rules(tablet) {
+        @apply h-[4.375rem] w-[3.125rem] object-contain;
+    }
+}

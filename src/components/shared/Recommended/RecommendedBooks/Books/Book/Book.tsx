@@ -1,25 +1,12 @@
 import { FC } from 'react';
-import { toast } from 'react-toastify';
-import { addRecommendBook } from 'services/books/books.api';
-import useBooks from 'store/books/useBooks';
 import { IBook } from 'types/books.types';
-
-import Button from 'components/ui/Button';
+import { IChildren } from 'types/children.types';
 
 import scss from './Book.module.scss';
 
-const Book: FC<IBook> = ({ _id, title, author, imageUrl, totalPages }) => {
-    const { getLibraryBooks } = useBooks();
-    const handleClick = async () => {
-        try {
-            await addRecommendBook(_id);
-            toast.success('Book added to library');
-            await getLibraryBooks();
-        } catch (error) {
-            toast.error('Something went wrong');
-        }
-    };
+interface IBookProps extends IBook, IChildren {}
 
+const Book: FC<IBookProps> = ({ title, author, imageUrl, totalPages, children }) => {
     return (
         <div className={scss.book}>
             <div className={scss.imageWrapper}>
@@ -32,11 +19,7 @@ const Book: FC<IBook> = ({ _id, title, author, imageUrl, totalPages }) => {
                 <p className={scss.pages}>{`${totalPages} pages`}</p>
             </div>
 
-            <div className={scss.buttonWrapper}>
-                <Button variant="outlined" onClick={handleClick}>
-                    Add to library
-                </Button>
-            </div>
+            <div className={scss.buttonWrapper}>{children}</div>
         </div>
     );
 };

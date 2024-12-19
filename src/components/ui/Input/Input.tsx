@@ -18,7 +18,7 @@ const Input = <T extends FieldValues>({
     register,
     name,
     label,
-    type,
+    type = 'text',
     formState,
     noBorder,
     ...rest

@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IRecommendBooksResponse } from 'services/books/books.types';
 import useBooks from 'store/books/useBooks';
 
+import Book from 'components/shared/Recommended/RecommendedBooks/Books/Book';
+import Button from 'components/ui/Button';
 import Icon from 'components/ui/Icon';
 import Modal from 'components/ui/Modal';
 
@@ -13,6 +16,7 @@ const MyLibraryBooks = () => {
     const { libraryBooks, getLibraryBooks, removeBook } = useBooks();
     const [book, setBook] = useState({} as IRecommendBooksResponse);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getLibraryBooks();
@@ -22,6 +26,10 @@ const MyLibraryBooks = () => {
         const book = libraryBooks.find((item) => item._id === id);
         if (book) setBook(book);
         setModalIsOpen(true);
+    };
+
+    const handleClickModal = async (id: string) => {
+        navigate(`/reading/${id}`);
     };
 
     const deleteBook = async (id: string) => {
@@ -65,7 +73,11 @@ const MyLibraryBooks = () => {
             </ul>
 
             <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-                <h1>{book.title}</h1>
+                <Book {...book}>
+                    <Button variant="outlined" onClick={() => handleClickModal(book._id)}>
+                        Start reading
+                    </Button>
+                </Book>
             </Modal>
         </section>
     );

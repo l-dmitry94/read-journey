@@ -4,7 +4,7 @@ export interface IBook {
     author: string;
     imageUrl: string;
     totalPages: number;
-    recommend: boolean;
+    recommend?: boolean;
 }
 
 export interface IAddBookData extends Pick<IBook, 'title' | 'author' | 'totalPages'> {}

@@ -1,0 +1,101 @@
+@import 'styles/mixins';
+
+.myBook {
+    @apply flex-1 rounded-30 bg-background px-5 py-10;
+
+    @include media-rules(tablet) {
+        @apply px-10 pb-6 pt-10;
+    }
+
+    @include media-rules(desktop) {
+        @apply pb-[3.25rem];
+    }
+}
+
+.title {
+    @apply mb-10 text-xl font-bold leading-none tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply mb-8 text-[1.75rem] leading-[1.14] -tracking-tight;
+    }
+
+    @include media-rules(desktop) {
+        @apply mb-11;
+    }
+}
+
+.book {
+    @apply mb-5 text-center;
+
+    @include media-rules(tablet) {
+        @apply mb-4;
+    }
+}
+
+.image {
+    @apply mx-auto mb-[0.625rem] h-[13rem] w-[8.625rem] rounded-lg;
+
+    @include media-rules(tablet) {
+        @apply mb-6 h-[16rem] w-[10.5rem];
+    }
+
+    @include media-rules(desktop) {
+        @apply h-[21.25rem] w-[14rem];
+    }
+}
+
+.info {
+    @apply mx-auto max-w-[9.125rem];
+
+    @include media-rules(tablet) {
+        @apply max-w-[19.875rem];
+    }
+}
+
+.bookTitle {
+    @apply mb-[0.375rem] font-bold capitalize leading-[1.29] tracking-tight;
+
+    @include media-rules(tablet) {
+        @apply mb-1 text-xl leading-none;
+    }
+}
+
+.bookAuthor {
+    @apply text-[0.625rem] font-medium leading-[1.2] tracking-tight text-secondary;
+
+    @include media-rules(tablet) {
+        @apply text-sm leading-[1.29];
+    }
+}
+
+.buttonContent {
+    @apply bg-error transition-all duration-150 ease-linear;
+}
+
+.button {
+    @apply mx-auto flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary;
+
+    @include media-rules(tablet) {
+        @apply h-[3.125rem] w-[3.125rem];
+    }
+}
+
+.buttonOn {
+    composes: buttonContent;
+
+    @apply h-[1.875rem] w-[1.875rem] rounded-full;
+
+    @include media-rules(tablet) {
+        @apply h-10 w-10;
+    }
+}
+
+// .buttonOff {
+//     composes: buttonContent;
+
+//     @apply h-4 w-4 rounded-sm;
+
+//     @include media-rules(tablet) {
+//         @apply h-5 w-5;
+//     }
+// }
